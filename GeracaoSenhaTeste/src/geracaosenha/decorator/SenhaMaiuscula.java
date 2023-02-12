@@ -8,9 +8,7 @@ public class SenhaMaiuscula extends Decorator {
         super(decorates);
     }
 
-    public String decorarSenhaMaiusculo(int tam) {
-
-        String letras = "ABCDEFGHIJKLMNOPQRSTUVYWXZ";
+    public String decorarSenhaMaiusculo(int tam, String tipoSenha) {
         
         Random random = new Random();
        
@@ -18,9 +16,9 @@ public class SenhaMaiuscula extends Decorator {
         int index = -1;
         for (int i = 0; i < tam; i++) {
             
-            index = random.nextInt(letras.length());
+            index = random.nextInt(tipoSenha.length());
     
-            armazenaChaves += letras.substring(index, index + 1);
+            armazenaChaves += tipoSenha.substring(index, index + 1);
         }
         System.out.println("Decorou senha: " + armazenaChaves);
         
@@ -30,7 +28,7 @@ public class SenhaMaiuscula extends Decorator {
     @Override
     public void decorarSenha() {
         super.decorarSenha();
-        decorarSenhaMaiusculo(0);
+        decorarSenhaMaiusculo(0, "");
     }
 
 }

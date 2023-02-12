@@ -144,6 +144,7 @@ public class GeradorSenha extends javax.swing.JFrame {
         String senha = "";
         String retorno;
         SenhaSimples ss = new SenhaSimples();
+        String tipoSenha = "";
 
         //Tenho que pegar o valor de lblSenhaTamanho e tranformar em inteiro
         //Usar no método que vai escrever a senha. Assim ele vai saber quantos caracteres aleatórios colocar
@@ -152,29 +153,33 @@ public class GeradorSenha extends javax.swing.JFrame {
         if (CheckCaractereEsp.isSelected()) {
             //Aqui posso chamar o método que coloca carac Esp
             //Aqui posso colocar um atributo que coloca carac Esp no aleatorio
+            tipoSenha += "!@#$%&*";
             SenhaCaractereEsp sce = new SenhaCaractereEsp(ss);
-            retorno = sce.decorarSenhaCaracE(senhaTamanho);
+            retorno = sce.decorarSenhaCaracE(senhaTamanho, tipoSenha);
             senha += retorno;
         }
         if (CheckNumero.isSelected()) {
             //Aqui posso chamar o método que coloca numeros
             //Aqui posso colocar um atributo que coloca numeros no aleatorio
+            tipoSenha += "0123456789";
             SenhaNumero sn = new SenhaNumero(ss);
-            retorno = sn.decorarSenhaNumero(senhaTamanho);
+            retorno = sn.decorarSenhaNumero(senhaTamanho, tipoSenha);
             senha += retorno;
         }
         if (CheckMaiuscula.isSelected()) {
             //Aqui posso chamar o método que coloca maiuscula
             //Aqui posso colocar um atributo que coloca maiuscula no aleatorio
+            tipoSenha += "ABCDEFGHIJKLMNOPQRSTUVYWXZ";
             SenhaMaiuscula sma = new SenhaMaiuscula(ss);
-            retorno = sma.decorarSenhaMaiusculo(senhaTamanho);
+            retorno = sma.decorarSenhaMaiusculo(senhaTamanho, tipoSenha);
             senha += retorno;
         }
         if (CheckMinuscula.isSelected()) {
             //Aqui posso chamar o método que coloca minuscula
             //Aqui posso colocar um atributo que coloca minuscula no aleatorio
+            tipoSenha += "abcdefghijklmnopqrstuvwxyz";
             SenhaMinuscula smi = new SenhaMinuscula(ss);
-            retorno = smi.decorarSenhaMinusculo(senhaTamanho);
+            retorno = smi.decorarSenhaMinusculo(senhaTamanho, tipoSenha);
             senha += retorno;
         }
         lblSenhaResultado.setText(senha);

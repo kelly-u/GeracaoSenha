@@ -8,9 +8,7 @@ public class SenhaCaractereEsp extends Decorator {
         super(decorates);
     }
     
-    public String decorarSenhaCaracE(int tam){        
-        
-        String caracteres = "!@#$%&*";
+    public String decorarSenhaCaracE(int tam, String tipoSenha){        
         
         Random random = new Random();
        
@@ -18,9 +16,9 @@ public class SenhaCaractereEsp extends Decorator {
         int index = -1;
         for (int i = 0; i < tam; i++) {
             
-            index = random.nextInt(caracteres.length());
+            index = random.nextInt(tipoSenha.length());
     
-            armazenaChaves += caracteres.substring(index, index + 1);
+            armazenaChaves += tipoSenha.substring(index, index + 1);
         }
         System.out.println("Decorou senha: " + armazenaChaves);
         
@@ -30,7 +28,7 @@ public class SenhaCaractereEsp extends Decorator {
     @Override
     public void decorarSenha(){
         super.decorarSenha();
-        decorarSenhaCaracE(0);
+        decorarSenhaCaracE(0, "");
     }
     
 }
